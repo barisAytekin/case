@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js && ",
-    "server": "nodemon --quiet backend",
-    "client": "npm start --prefix frontend",
+    "server": "nodemon backend/server.js",
+    "client": "cd frontend && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "postinstall": "cd frontend && npm install"
   },
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
+    "concurrently": "^8.2.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
