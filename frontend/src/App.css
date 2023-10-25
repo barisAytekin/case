@@ -1,0 +1,17 @@
+body {
+  background-color: #cdecff;
+  color: rgb(226, 156, 156);
+  padding: 40px;
+  font-family: Sans-Serif;
+  text-align: center;
+  display: grid;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
