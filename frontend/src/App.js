@@ -58,30 +58,34 @@ function App() {
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7}>
-        <BarChart
-          xAxis={[
-            {
-              id: "barCategories",
-              data: months,
-              scaleType: "band",
-              label: "Number of monthly sales made by the vendor",
-            },
-          ]}
-          series={
-            sales.length > 0 && sales[0].hasOwnProperty("numberOfSales")
-              ? [
-                  {
-                    data: sales.map((item) => item.numberOfSales),
-                  },
-                ]
-              : [
-                  {
-                    data: Array(12).fill(0),
-                  },
-                ]
-          }
-          height={300}
-        />
+        <Paper sx={{ width: "97%", overflow: "hidden", my: 2 }}>
+          <Box>
+            <BarChart
+              xAxis={[
+                {
+                  id: "barCategories",
+                  data: months,
+                  scaleType: "band",
+                  label: "Number of monthly sales made by the vendor",
+                },
+              ]}
+              series={
+                sales.length > 0 && sales[0].hasOwnProperty("numberOfSales")
+                  ? [
+                      {
+                        data: sales.map((item) => item.numberOfSales),
+                      },
+                    ]
+                  : [
+                      {
+                        data: Array(12).fill(0),
+                      },
+                    ]
+              }
+              height={300}
+            />
+          </Box>
+        </Paper>
         <DynamicTable vendor={selectedVendor} />
       </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
