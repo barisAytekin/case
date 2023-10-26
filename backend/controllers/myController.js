@@ -36,7 +36,20 @@ const getMonthlySales = asyncHandler(async (req, res) => {
   const products = await ParentProduct.find({
     vendor: new mongoose.Types.ObjectId(vendor[0]._id.toString()),
   });
-
+  let output = [
+    { _id: 1, numberOfSales: 0 },
+    { _id: 2, numberOfSales: 0 },
+    { _id: 3, numberOfSales: 0 },
+    { _id: 4, numberOfSales: 0 },
+    { _id: 5, numberOfSales: 0 },
+    { _id: 6, numberOfSales: 0 },
+    { _id: 7, numberOfSales: 0 },
+    { _id: 8, numberOfSales: 0 },
+    { _id: 9, numberOfSales: 0 },
+    { _id: 10, numberOfSales: 0 },
+    { _id: 11, numberOfSales: 0 },
+    { _id: 12, numberOfSales: 0 },
+  ];
   let sales = await Order.aggregate([
     {
       $unwind: "$cart_item",
@@ -57,8 +70,11 @@ const getMonthlySales = asyncHandler(async (req, res) => {
       },
     },
   ]);
-
-  res.status(200).json(sales);
+  console.log(sales);
+  for (element of sales) {
+    output[parseInt(element._id) - 1].numberOfSales = element.numberOfSales;
+  }
+  res.status(200).json(output);
 });
 
 const getProductsAmount = asyncHandler(async (req, res) => {

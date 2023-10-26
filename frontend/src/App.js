@@ -62,13 +62,13 @@ function App() {
           xAxis={[
             {
               id: "barCategories",
-              data: Object.values(months),
+              data: months,
               scaleType: "band",
               label: "Number of monthly sales made by the vendor",
             },
           ]}
           series={
-            sales.length > 0
+            sales.length > 0 && sales[0].hasOwnProperty("numberOfSales")
               ? [
                   {
                     data: sales.map((item) => item.numberOfSales),
@@ -76,7 +76,7 @@ function App() {
                 ]
               : [
                   {
-                    data: [0],
+                    data: Array(12).fill(0),
                   },
                 ]
           }
@@ -118,19 +118,19 @@ function App() {
   );
 }
 
-const months = {
-  1: "Jan",
-  2: "Feb",
-  3: "Mar",
-  4: "Apr",
-  5: "May",
-  6: "Jun",
-  7: "Jul",
-  8: "Aug",
-  9: "Sep",
-  10: "Oct",
-  11: "Nov",
-  12: "Dec",
-};
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 export default App;
