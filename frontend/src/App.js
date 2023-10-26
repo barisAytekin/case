@@ -80,7 +80,6 @@ function App() {
                   },
                 ]
           }
-          width={850}
           height={300}
         />
         <DynamicTable vendor={selectedVendor} />
